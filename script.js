@@ -245,7 +245,19 @@ function setupEventListeners() {
     
     // Modal close button
     closeModal.addEventListener('click', () => {
-        modal.classList.add('hidden');
+        // Añadir animación de cierre
+        const modalContent = document.querySelector('.modal-content');
+        modalContent.style.transform = 'scale(0.8)';
+        modalContent.style.opacity = '0';
+
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            // Restaurar estilos para la próxima apertura
+            if (modalContent) {
+                modalContent.style.transform = '';
+                modalContent.style.opacity = '';
+            }
+        }, 300);
     });
     
     // Close modal when clicking outside content
@@ -371,6 +383,13 @@ function showPokemonDetails(pokemon) {
             <div class="stat"><strong>Velocidad:</strong> ${(stats.speed || 0)}</div>
         </div>
     `;
+
+    // Asegurar que el modal esté completamente visible y animado
+    const modalContent = document.querySelector('.modal-content');
+    if (modalContent) {
+        modalContent.style.transform = '';
+        modalContent.style.opacity = '';
+    }
 
     modal.classList.remove('hidden');
 }
