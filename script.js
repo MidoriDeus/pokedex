@@ -353,8 +353,12 @@ function showPokemonDetails(pokemon) {
 
         <p><strong>Descripción:</strong> ${(pokemon.description || 'No disponible').replace(/\n/g, ' ')}</p>
 
+        <div class="weaknesses-section">
+            <h3>Debilidades</h3>
+            <div class="weaknesses-container">${weaknessesText}</div>
+        </div>
+
         <div class="detail-stats">
-            <div class="stat"><strong>Debilidades:</strong> ${weaknessesText}</div>
             <div class="stat"><strong>Altura:</strong> ${(pokemon.height || 0)} m</div>
             <div class="stat"><strong>Peso:</strong> ${(pokemon.weight || 0)} kg</div>
             <div class="stat"><strong>Habilidades:</strong> ${abilitiesText}</div>
